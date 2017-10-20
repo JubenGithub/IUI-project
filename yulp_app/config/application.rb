@@ -12,6 +12,18 @@ module YulpApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # Angular2 Setup
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+    # Explicitly add the 'node_modules' directory
+    config.assets.paths << Rails.root.join('node_modules')
+
+
+
     # These lines cannot be push into Heroku
     # https://github.com/rails/sprockets-rails/issues/237
     config.assets.precompile << Proc.new do |path|

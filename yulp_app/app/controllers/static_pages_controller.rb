@@ -40,4 +40,14 @@ class StaticPagesController < ApplicationController
   def contact
 
   end
+
+  def jtest
+    respond_to do |format|
+      format.json { render json: {name: 'data', version: '1.1'}}
+    end
+  end
+
+
+
+
 end
